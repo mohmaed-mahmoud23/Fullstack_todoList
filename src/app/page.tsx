@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 ">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24  ">
       <Dialog>
         <form>
           <DialogTrigger asChild>
@@ -23,7 +23,7 @@ export default function Home() {
               <Plus />
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
+          <DialogContent className="sm:max-w-[425px] dark:text-black" >
             <DialogHeader>
               <DialogTitle>Edit profile</DialogTitle>
               <DialogDescription>
@@ -31,12 +31,12 @@ export default function Home() {
                 done.
               </DialogDescription>
             </DialogHeader>
-            <div className="grid gap-4">
-              <div className="grid gap-3">
-                <Label htmlFor="name-1">Name</Label>
-                <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+            <div className="grid gap-4  ">
+              <div className="grid gap-3  dark:text-black">
+                <Label htmlFor="name-1 ">Name</Label>
+                <Input id="name-1" name="name" />
               </div>
-              <div className="grid gap-3">
+              <div className="grid gap-3  dark:text-black">
                 <Label htmlFor="username-1">Username</Label>
                 <Input
                   id="username-1"
@@ -47,7 +47,9 @@ export default function Home() {
             </div>
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
+                <Button variant="default" className=" dark:bg-black">
+                  Cancel
+                </Button>
               </DialogClose>
               <Button type="submit">Save changes</Button>
             </DialogFooter>
