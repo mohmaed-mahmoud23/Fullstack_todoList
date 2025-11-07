@@ -8,11 +8,12 @@ async function main() {
 
 await prisma.todo.create({
   data:{
+    
     title:"sdssd",
     body:"asssdmsm",
-    completed :true
-    
-  }
+    completed :true,
+ createdAt: new Date()  , 
+}
 })
 
 
