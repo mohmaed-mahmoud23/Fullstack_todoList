@@ -13,5 +13,6 @@ export  const profileFormSchema = z.object({
     bio: z.string().max(30, {
       message: "Username must not be longer than 30 characters.",
     }),
+    chack:z.boolean()
   });
  export type ProfileFormValues = z.infer<typeof profileFormSchema>;

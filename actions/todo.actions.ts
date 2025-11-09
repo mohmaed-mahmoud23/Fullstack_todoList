@@ -7,11 +7,20 @@ const todo=  await prisma.todo.findMany()
     return todo
 }
 
-export const UbdateTodoListactions=async ()=>{
+export const PostTodoListactions=async ({title,body ,completed}:{title:string , body:string ,completed:boolean})=>{
+    return await prisma.todo.create({
+        data:{
+            body,
+            title,
+            completed
+            
+        }
+    })
     
 }
 
-export const PostTodoListactions=async ()=>{
+export const UbdateTodoListactions=async ()=>{
+
     
 }
 

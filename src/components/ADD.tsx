@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -26,12 +25,16 @@ import {
 } from "@/components/ui/form";
 
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { profileFormSchema, ProfileFormValues } from "../../schema";
+import { PostTodoListactions } from "../../actions/todo.actions";
+import { check } from "zod";
 const ADD = () => {
   const defaultValues: Partial<ProfileFormValues> = {
-    bio: "pio",
-    title: "title",
+    bio: "",
+    title: "",
+    chack: false,
   };
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -39,7 +42,13 @@ const ADD = () => {
     defaultValues,
   });
 
-  const onSubmit = () => {};
+  const onSubmit = async (data: ProfileFormValues) => {
+    await PostTodoListactions({
+      body: data.bio,
+      title: data.title,
+      completed: data.chack,
+    });
+  };
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -85,25 +94,39 @@ const ADD = () => {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>
-                      You can <span>@mention</span> other users and
-                      organizations to link to them.
-                    </FormDescription>
+
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="chack"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        id="chack"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormLabel htmlFor="chack">completed</FormLabel>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="space-x-2">
+                <Button variant="default" className=" dark:bg-black">
+                  Cancel
+                </Button>
+                <Button type="submit">Save changes</Button>
+              </div>
             </form>
           </Form>
         </div>
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button variant="default" className=" dark:bg-black">
-              Cancel
-            </Button>
-          </DialogClose>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
