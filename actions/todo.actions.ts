@@ -25,6 +25,11 @@ export const UbdateTodoListactions=async ()=>{
 }
 
 
-export const DeletTodoListactions=async ()=>{
+export const DeletTodoListactions=async ({id}:{id:string})=>{
+    await prisma.todo.delete({
+        where :{
+            id
+        }
+    })
     
 }
