@@ -4,20 +4,21 @@ import { Pen, TrashIcon } from "lucide-react";
 import { DeletTodoListactions } from "../../actions/todo.actions";
 import Spiner from "./ui/Spiner";
 import { useState } from "react";
+import EditTodo from "./EditTodo";
+import { Iprop } from "../../interfaces";
 
-const TodoactionsButton = ({ id }: { id: string }) => {
+const TodoActionsButton = ({ todo }: { todo: Iprop }) => {
   const [Loding, Setloding] = useState(false);
 
   return (
     <>
-      <Button>
-        <Pen size={16} />
-      </Button>
+      <EditTodo todo={todo} />
       <Button
+        disabled={Loding}
         onClick={async () => {
           {
             Setloding(true);
-            await DeletTodoListactions({ id });
+            await DeletTodoListactions({ id: todo.id });
 
             Setloding(false);
           }
@@ -35,4 +36,4 @@ const TodoactionsButton = ({ id }: { id: string }) => {
   );
 };
 
-export default TodoactionsButton;
+export default TodoActionsButton;

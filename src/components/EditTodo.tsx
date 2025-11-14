@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Pen, Plus } from "lucide-react";
 import { useForm } from "react-hook-form";
 
 import {
@@ -28,16 +28,17 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { profileFormSchema, ProfileFormValues } from "../../schema";
-import { PostTodoListactions } from "../../actions/todo.actions";
+import { UbdateTodoListactions } from "../../actions/todo.actions";
 import { useState } from "react";
-const ADD = () => {
+import { Iprop } from "../../interfaces";
+const EditTodo = ({ todo }: { todo: Iprop }) => {
   const [loding, Setloding] = useState(false);
   const [open, setOpen] = useState(false);
 
   const defaultValues: Partial<ProfileFormValues> = {
-    bio: "",
-    title: "",
-    chack: false,
+    bio: todo.body,
+    title: todo.title,
+    chack: todo.completed,
   };
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -48,16 +49,17 @@ const ADD = () => {
   const onSubmit = async (data: ProfileFormValues) => {
     Setloding(true); // نبدأ التحميل
     try {
-      await PostTodoListactions({
+      await UbdateTodoListactions({
+        id: todo.id,
         body: data.bio,
         title: data.title,
         completed: data.chack,
       });
-      setOpen(false); // يقفل الـ Dialog بعد الحفظ
+      setOpen(false);
     } catch (error) {
       console.error(error);
     } finally {
-      Setloding(false); // نوقف التحميل
+      Setloding(false);
     }
   };
 
@@ -65,15 +67,14 @@ const ADD = () => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>
-          AD TODOD
-          <Plus />
+          <Pen size={16} />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] dark:text-black">
         <DialogHeader>
-          <DialogTitle>Add Todo</DialogTitle>
+          <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your tod here. Click save when you&apos;re done.
+            Make changes to your profile here. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4  ">
@@ -146,4 +147,4 @@ const ADD = () => {
   );
 };
 
-export default ADD;
+export default EditTodo;
