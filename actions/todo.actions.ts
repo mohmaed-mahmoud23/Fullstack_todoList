@@ -1,24 +1,34 @@
 "use server"
 import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-const prisma = new PrismaClient()
+const prisma = new PrismaClient({
+  datasourceUrl: process.env.DATABASE_URL,
+});
 
-export const getTodoListactions=async ()=>{
+export const getTodoListactions=async ({userId}:{userId:string|null})=>{
 const todo=  await prisma.todo.findMany({
+
     orderBy:{
         createdAt:"desc"
-    }
+    },
+
+    where:{
+userId :userId as string
+}
 })
     return todo
+    
 }
+ 
+export const PostTodoListactions=async ({title,body ,completed ,userId}:{title:string , body:string ,completed:boolean,userId:string|null})=>{
+      console.log("DATA RECEIVED:", { title, body, completed,  });
 
-export const PostTodoListactions=async ({title,body ,completed}:{title:string , body:string ,completed:boolean})=>{
-     await prisma.todo.create({
+    await prisma.todo.create({
         data:{
             body,
             title,
-            completed
-            
+            completed,
+userId :userId as string
         },
     },
 )

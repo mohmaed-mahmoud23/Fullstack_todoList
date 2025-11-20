@@ -116,7 +116,7 @@ const EditTodo = ({ todo }: { todo: Iprop }) => {
                 control={form.control}
                 name="chack"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="flex items-center   gap-2 ">
                     <FormControl>
                       <Checkbox
                         checked={field.value}
@@ -125,7 +125,9 @@ const EditTodo = ({ todo }: { todo: Iprop }) => {
                         {...field}
                       />
                     </FormControl>
-                    <FormLabel htmlFor="chack">completed</FormLabel>
+                    <FormLabel htmlFor="chack" className="font-bold">
+                      completed
+                    </FormLabel>
 
                     <FormMessage />
                   </FormItem>

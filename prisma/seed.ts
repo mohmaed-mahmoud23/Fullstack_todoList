@@ -5,19 +5,17 @@ const prisma = new PrismaClient()
 async function main() {
   // ... you will write your Prisma Client queries here
 
-
 await prisma.todo.create({
   data:{
-    
-    title:"sssdssd",
-    body:"asssssdmsm",
+   
+            body :"aas",
+            title :"sdsd",
+          userId:"سي"
 
-
-    
-}
+            
+            
+  }
 })
-
-
 // await prisma.user.create({
 //     data:{
 //         email :"mohششششande@mo.com",
@@ -31,15 +29,5 @@ await prisma.todo.create({
 //        }
         
 //     }
-// })
-  
+// 
 }
-
-main()
-  .catch(async (e) => {
-    console.error(e)
-    process.exit(1)
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })

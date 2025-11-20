@@ -9,7 +9,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -30,7 +29,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { profileFormSchema, ProfileFormValues } from "../../schema";
 import { PostTodoListactions } from "../../actions/todo.actions";
 import { useState } from "react";
-const ADD = () => {
+import { string } from "zod";
+const ADD = ({ userId }: { userId: string | null }) => {
   const [loding, Setloding] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -52,12 +52,14 @@ const ADD = () => {
         body: data.bio,
         title: data.title,
         completed: data.chack,
+        userId: userId ?? null, // لو موجود يبقى يحط، لو مش موجود يبقى null
       });
-      setOpen(false); // يقفل الـ Dialog بعد الحفظ
+
+      setOpen(false);
     } catch (error) {
       console.error(error);
     } finally {
-      Setloding(false); // نوقف التحميل
+      Setloding(false);
     }
   };
 
@@ -112,10 +114,11 @@ const ADD = () => {
                 )}
               />
               <FormField
+                
                 control={form.control}
                 name="chack"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field }) => ( 
+                  <FormItem  className="flex items-center gap-2 ">
                     <FormControl>
                       <Checkbox
                         checked={field.value}
@@ -124,7 +127,7 @@ const ADD = () => {
                         {...field}
                       />
                     </FormControl>
-                    <FormLabel htmlFor="chack">completed</FormLabel>
+                    <FormLabel htmlFor="chack" className="font-bold">completed</FormLabel>
 
                     <FormMessage />
                   </FormItem>
