@@ -114,20 +114,20 @@ const ADD = ({ userId }: { userId: string | null }) => {
                 )}
               />
               <FormField
-                
                 control={form.control}
                 name="chack"
-                render={({ field }) => ( 
-                  <FormItem  className="flex items-center gap-2 ">
+                render={({ field }) => (
+                  <FormItem className="flex items-center gap-2 ">
                     <FormControl>
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
                         id="chack"
-                        {...field}
                       />
                     </FormControl>
-                    <FormLabel htmlFor="chack" className="font-bold">completed</FormLabel>
+                    <FormLabel htmlFor="chack" className="font-bold">
+                      completed
+                    </FormLabel>
 
                     <FormMessage />
                   </FormItem>

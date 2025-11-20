@@ -118,11 +118,10 @@ const EditTodo = ({ todo }: { todo: Iprop }) => {
                 render={({ field }) => (
                   <FormItem className="flex items-center   gap-2 ">
                     <FormControl>
-                      <Checkbox
+                      <Checkbox 
                         checked={field.value}
                         onCheckedChange={field.onChange}
                         id="chack"
-                        {...field}
                       />
                     </FormControl>
                     <FormLabel htmlFor="chack" className="font-bold">
