@@ -26,11 +26,11 @@ export default function TodoTable({ todo }: { todo: Iprop[] }) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {todo.map((todos) => (
-          <TableRow key={todos.id}>
-            <TableCell className="font-medium">{todos.id}</TableCell>
-            <TableCell>{todos.title}</TableCell>
-            <TableCell>{todos.completed ? "✅ Done" : "❌ Not Done"}</TableCell>
+        {todo?.map((todos) => (
+          <TableRow key={todos?.id}>
+            <TableCell className="font-medium">{todos?.id}</TableCell>
+            <TableCell>{todos?.title}</TableCell>
+            <TableCell>{todos?.completed ? "✅ Done" : "❌ Not Done"}</TableCell>
             <TableCell>
               {todos.createdAt.toLocaleString("en-US", {
                 day: "2-digit",

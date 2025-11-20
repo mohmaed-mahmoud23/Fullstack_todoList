@@ -52,9 +52,9 @@ const ADD = ({ userId }: { userId: string | null }) => {
         body: data.bio,
         title: data.title,
         completed: data.chack,
-        userId: userId ?? null, // لو موجود يبقى يحط، لو مش موجود يبقى null
-      });
-
+        userId
+      })
+      
       setOpen(false);
     } catch (error) {
       console.error(error);

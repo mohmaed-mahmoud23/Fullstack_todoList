@@ -4,7 +4,6 @@ export default clerkMiddleware();
 
 export const config = {
   matcher: [
-        "/", // الصفحة الرئيسية محمية
-
+    "/((?!_next|.*\\..*|sign-in|sign-up).*)",
   ],
 };
