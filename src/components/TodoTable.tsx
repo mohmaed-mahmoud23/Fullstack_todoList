@@ -17,7 +17,7 @@ export default function TodoTable({ todo }: { todo: Iprop[] }) {
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>id </TableHead>
+          <TableHead>id </TableHead>  
           <TableHead>title</TableHead>
           <TableHead>completed</TableHead>
           <TableHead>createdAt</TableHead>

@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { getTodoListactions } from "../../actions/todo.actions";
 import ADD from "@/components/ADD";
-import TodoTable from "@/components/TodoTable";
+import TodoTable from "../components/TodoTable";
 
 export default async function Home() {
   const { userId } = await auth();
