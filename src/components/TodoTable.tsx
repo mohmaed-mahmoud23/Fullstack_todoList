@@ -17,7 +17,7 @@ export default function TodoTable({ todo }: { todo: Iprop[] }) {
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>id </TableHead>  
+          <TableHead>id </TableHead>
           <TableHead>title</TableHead>
           <TableHead>completed</TableHead>
           <TableHead>createdAt</TableHead>
@@ -30,7 +30,9 @@ export default function TodoTable({ todo }: { todo: Iprop[] }) {
           <TableRow key={todos?.id}>
             <TableCell className="font-medium">{todos?.id}</TableCell>
             <TableCell>{todos?.title}</TableCell>
-            <TableCell>{todos?.completed ? "✅ Done" : "❌ Not Done"}</TableCell>
+            <TableCell>
+              {todos?.completed ? "✅ Done" : "❌ Not Done"}
+            </TableCell>
             <TableCell>
               {todos.createdAt.toLocaleString("en-US", {
                 day: "2-digit",

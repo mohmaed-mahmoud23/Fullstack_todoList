@@ -5,7 +5,8 @@ import TodoTable from "../components/TodoTable";
 
 export default async function Home() {
   const { userId } = await auth();
-  console.log(userId);
+  console.log("userId", userId);
+
   const todos = await getTodoListactions({
     userId,
   });
