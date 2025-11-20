@@ -7,7 +7,7 @@ import { useState } from "react";
 import EditTodo from "./EditTodo";
 import { Iprop } from "../../interfaces";
 
-const TodoActionsButton = ({ todo }: { todo: Iprop }) => {
+const ActionsButton = ({ todo }: { todo: Iprop }) => {
   const [Loding, Setloding] = useState(false);
 
   return (
@@ -36,4 +36,4 @@ const TodoActionsButton = ({ todo }: { todo: Iprop }) => {
   );
 };
 
-export default TodoActionsButton;
+export default ActionsButton;
