@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Iprop } from "../../interfaces";
-import TodoactionsButton from "./TodoActionsButton";
+import TodoActionsButton from "./TodoActionsButton";
 
 export default function TodoTable({ todo }: { todo: Iprop[] }) {
   return (
@@ -42,7 +42,7 @@ export default function TodoTable({ todo }: { todo: Iprop[] }) {
               })}
             </TableCell>
             <TableCell className="flex items-center  space-x-2">
-              <TodoactionsButton todo={todos} />
+              <TodoActionsButton todo={todos} />
             </TableCell>
           </TableRow>
         ))}
