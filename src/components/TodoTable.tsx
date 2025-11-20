@@ -9,8 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Iprop } from "../../interfaces";
-import TodoActionsButton from "./TodoActionsButton";
-
+import TodoActionsButton from "../components/TodoActionsButton"
 export default function TodoTable({ todo }: { todo: Iprop[] }) {
   return (
     <Table>
