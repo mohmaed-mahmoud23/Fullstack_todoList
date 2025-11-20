@@ -1,10 +1,7 @@
 "use server"
 import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-const prisma = new PrismaClient({
-  datasourceUrl: process.env.DATABASE_URL,
-});
-
+const prisma = new PrismaClient()
 export const getTodoListactions=async ({userId}:{userId:string|null})=>{
 const todo=  await prisma.todo.findMany({
 
