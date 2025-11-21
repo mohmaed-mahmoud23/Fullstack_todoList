@@ -18,10 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+    >
       <html lang="en">
         <body
-          className={`${inter.className}   bg-white   text-black  dark:text-white  dark:bg-black`}
+          className={`${inter.className} bg-white text-black dark:text-white dark:bg-black`}
         >
           <ThemeProvider
             attribute="class"
